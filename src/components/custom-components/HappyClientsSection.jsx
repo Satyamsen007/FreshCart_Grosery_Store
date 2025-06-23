@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import React from 'react'
-import { clientLogosFirstRow, clientLogosSecondRow } from '../../../public/assets/assets';
+import { clientLogosSecondRow } from '../../../public/assets/assets';
 
 const HappyClientsSection = () => {
   const renderLogoRow = (logos, direction) => (
@@ -27,7 +26,7 @@ const HappyClientsSection = () => {
         <p className="text-center text-[var(--textColor)]/60 dark:text-gray-400 my-2 text-sm max-md:text-xs">
           Trusted by top companies around the globe — our clients speak for our quality.
         </p>
-        
+
         {renderLogoRow(clientLogosSecondRow, 'left')}
         {renderLogoRow(clientLogosSecondRow, 'right')}
       </div>

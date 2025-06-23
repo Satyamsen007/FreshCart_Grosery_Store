@@ -1,11 +1,8 @@
 'use client'
 
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromWishlist } from '@/store/features/wishlistSlice';
-import { addToCart } from '@/store/features/cartSlice';
-import { Heart, ShoppingCart, Trash2 } from 'lucide-react';
-import Image from 'next/image';
+import { Heart, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import DiscountProductCard from '@/components/custom-components/products/DiscountProductCard';
@@ -19,7 +16,7 @@ import { toast } from 'sonner';
 const WishlistPage = () => {
   const dispatch = useDispatch();
   const { wishlistItems = [], loading } = useSelector((state) => state.wishlist);
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const isLoading = loading || status === 'loading';
 
   const handleRemoveFromWishlist = (productId) => {

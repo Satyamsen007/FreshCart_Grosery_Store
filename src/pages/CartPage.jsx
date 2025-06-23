@@ -3,7 +3,7 @@
 import React, { useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateCartItem, removeFromCart } from '@/store/features/cartSlice';
-import { X, ShoppingBag } from 'lucide-react';
+import {  ShoppingBag } from 'lucide-react';
 import { GrHomeRounded } from 'react-icons/gr';
 import EmptyCartUi from '@/components/custom-components/EmptyCartUi';
 import { AnimatePresence } from 'framer-motion';
@@ -16,12 +16,12 @@ import CartPageSkeleton from '@/components/custom-components/skeletons/CartPageS
 const CartPage = () => {
   const dispatch = useDispatch();
   const { items: cartItems } = useSelector(state => state.cart);
-  const { status } = useSession()
+  const { status } = useSession();
 
   // Memoized calculations
   const { subtotal, tax, shipping, total } = useMemo(() => {
     const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
-    const tax = subtotal * 0.10; // 10% tax
+    const tax = subtotal * 0.10;
     const shipping = cartItems.length > 0 ? 40.00 : 0;
     const total = subtotal + tax + shipping;
     return { subtotal, tax, shipping, total };
@@ -34,6 +34,7 @@ const CartPage = () => {
       variantId,
       quantity: newQuantity
     }));
+    
     toast.success('Cart updated successfully!', {
       position: 'top-center',
       autoClose: 3000,

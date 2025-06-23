@@ -1,6 +1,5 @@
 'use client'
 
-import MultipleSelector from '@/components/ui/multipleSelect';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { uploadToCloudinary } from '@/helper/uploadToCloudinary';
 import Image from 'next/image';
@@ -9,15 +8,13 @@ import { HiOutlineUpload } from "react-icons/hi";
 import { toast } from 'sonner';
 import { RxCross2 } from "react-icons/rx";
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
-import { HashLoader } from 'react-spinners'
+import { HashLoader } from 'react-spinners';
 import { allCategorys, babyCareBrands, babyCareWeights, cleaningGoodBrands, cleaningGoodsWeights, coldDrinksBrands, coldDrinksWeights, cookingOilBrands, cookingOilsWeights, dairyProductBrands, dairyProductsWeights, freshBakeryBrands, freshBakeryWeights, freshFruitsBrands, freshFruitsWeights, frozenFoodBrands, frozenFoodsWeights, grainsCerealsBrands, grainsCerealsWeights, healthDrinkBrands, healthDrinksWeights, instantMealsBrands, instantMealsWeights, masalaZoneBrands, masalaZoneWeights, organicVagiesBrands, organicVagiesWeights, sweetTreatBrands, sweetTreatsWeights } from '../../../../public/assets/assets';
 import axios from 'axios';
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion';
 
 const CreateNewProductTab = ({ setChangeToCreateProductTab }) => {
-  const [uploadingIndex, setUploadingIndex] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
-  const [imageError, setImageError] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [creatingProduct, setCreatingProduct] = useState(false);
   const [uploadingStatus, setUploadingStatus] = useState(Array(4).fill(false));
@@ -246,7 +243,6 @@ const CreateNewProductTab = ({ setChangeToCreateProductTab }) => {
               )
             ))}
           </div>
-          {imageError && <p className="text-xs text-red-500 mt-2">{imageError}</p>}
         </div>
         <p className='text-xs text-[var(--textColor)]/90 dark:text-gray-300 mt-3'>⚠️ Tip: The first uploaded image will be shown as the primary display image for the product.</p>
       </div>

@@ -1,12 +1,11 @@
-import Image from 'next/image'
-import React from 'react'
-import { assets, demoTestimonials } from '../../../public/assets/assets'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination } from 'swiper/modules'
-import 'swiper/css/pagination'
+import Image from 'next/image';
+import { assets, demoTestimonials } from '../../../public/assets/assets';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css/pagination';
 import 'swiper/css';
-import { Rating } from '@mui/material'
-import { TiStarFullOutline, TiStarOutline } from 'react-icons/ti'
+import { Rating } from '@mui/material';
+import { TiStarFullOutline, TiStarOutline } from 'react-icons/ti';
 
 const TestimonialSlider = () => {
   return (

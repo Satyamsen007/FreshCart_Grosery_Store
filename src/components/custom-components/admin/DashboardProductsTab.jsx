@@ -1,13 +1,13 @@
 "use client"
 
-import { useState } from "react"
-import Image from "next/image"
-import { assets } from "../../../../public/assets/assets"
-import { ArrowLeft, Boxes, PackagePlus } from "lucide-react"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { MdAdd } from "react-icons/md"
-import AllCreatedProductsTab from "./AllCreatedProductsTab"
-import CreateNewProductTab from "./CreateNewProductTab"
+import { useState } from "react";
+import Image from "next/image";
+import { assets } from "../../../../public/assets/assets";
+import { ArrowLeft, Boxes, PackagePlus } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { MdAdd } from "react-icons/md";
+import AllCreatedProductsTab from "./AllCreatedProductsTab";
+import CreateNewProductTab from "./CreateNewProductTab";
 
 
 const DashboardProductsTab = () => {

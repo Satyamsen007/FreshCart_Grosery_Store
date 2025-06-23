@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
 import { Home, Heart, LayoutDashboard, PackageSearch, ShoppingCart, MapPin, HelpCircle, LogOut, Moon, Sun } from 'lucide-react';
 import useScrollingEffect from '@/hooks/use-scroll';
@@ -18,7 +17,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import Image from 'next/image';
 import { FaGithub } from 'react-icons/fa';
 import { useTheme } from 'next-themes';

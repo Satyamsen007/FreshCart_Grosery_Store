@@ -2,7 +2,6 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { assets } from '../../../../public/assets/assets'
 import { useForm } from 'react-hook-form';
-import { Checkbox } from '@/components/ui/checkbox';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from 'react-icons/fa6';
 import axios from 'axios';
@@ -14,7 +13,7 @@ import { toast } from 'sonner';
 const SignUpForm = ({ setAuthState }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
   const {
     register,
     handleSubmit,

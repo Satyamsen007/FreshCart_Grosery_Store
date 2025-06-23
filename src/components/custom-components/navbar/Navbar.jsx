@@ -1,14 +1,14 @@
 'use client'
 
-import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
-import { assets } from '../../../../public/assets/assets'
+import Image from 'next/image';
+import React, { useEffect, useRef, useState } from 'react';
+import { assets } from '../../../../public/assets/assets';
 import { IoSearch } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
 import { IoCloseCircle } from "react-icons/io5";
 import { BiMenuAltRight } from "react-icons/bi";
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { usePathname, useRouter } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import { CgProfile } from "react-icons/cg";
@@ -21,7 +21,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import { Skeleton } from '@/components/ui/skeleton';
 import { Heart, HelpCircle, LayoutDashboard, LogOut, MapPin, Moon, PackageSearch, Sun } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';

@@ -1,20 +1,20 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { motion } from 'framer-motion'
-import { Camera, Mail, User, Phone, MapPin, Shield, CreditCard, Package, Heart, LogOut, Loader2, AlertTriangle } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Skeleton } from "@/components/ui/skeleton"
-import { useRouter } from 'next/navigation'
-import { signOut, useSession, update } from 'next-auth/react'
-import Image from 'next/image'
-import { assets } from '../../public/assets/assets'
-import { getAuthUser, selectUser, selectAuthLoading } from '@/store/features/authSlice'
-import { updateUserProfile, deleteUserAccount } from '@/store/features/updateUserProfileSlice'
-import { toast } from 'sonner'
+import React, { useState, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
+import { Camera, Mail, User, Phone, MapPin, Package, Heart, LogOut, Loader2, AlertTriangle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Skeleton } from "@/components/ui/skeleton";
+import { useRouter } from 'next/navigation';
+import { signOut, useSession } from 'next-auth/react';
+import Image from 'next/image';
+import { assets } from '../../public/assets/assets';
+import { getAuthUser, selectUser, selectAuthLoading } from '@/store/features/authSlice';
+import { updateUserProfile, deleteUserAccount } from '@/store/features/updateUserProfileSlice';
+import { toast } from 'sonner';
 import {
   Dialog,
   DialogContent,
@@ -22,30 +22,30 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 
 const ProfilePage = () => {
-  const dispatch = useDispatch()
-  const router = useRouter()
-  const { data: session, status: sessionStatus, update: updateSession } = useSession()
-  const user = useSelector(selectUser)
-  const isLoading = useSelector(selectAuthLoading)
-  const [isEditing, setIsEditing] = useState(false)
-  const [isSaving, setIsSaving] = useState(false)
-  const [showDeleteModal, setShowDeleteModal] = useState(false)
-  const [deleteConfirmText, setDeleteConfirmText] = useState('')
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const { data: session, status: sessionStatus, update: updateSession } = useSession();
+  const user = useSelector(selectUser);
+  const isLoading = useSelector(selectAuthLoading);
+  const [isEditing, setIsEditing] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteConfirmText, setDeleteConfirmText] = useState('');
   const [formData, setFormData] = useState({
     name: user?.fullName || '',
     email: user?.email || '',
     phone: user?.phone || '',
-  })
-  const [avatarPreview, setAvatarPreview] = useState(null)
-  const fileInputRef = useRef(null)
-  const [isDeleting, setIsDeleting] = useState(false)
+  });
+  const [avatarPreview, setAvatarPreview] = useState(null);
+  const fileInputRef = useRef(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     dispatch(getAuthUser())
-  }, [dispatch])
+  }, [dispatch]);
 
   useEffect(() => {
     if (user) {
@@ -56,7 +56,7 @@ const ProfilePage = () => {
       })
       setAvatarPreview(user.avatar?.url || assets.userDefaultAvatar)
     }
-  }, [user])
+  }, [user]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -64,7 +64,7 @@ const ProfilePage = () => {
       ...prev,
       [name]: value
     }))
-  }
+  };
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0]
@@ -87,7 +87,7 @@ const ProfilePage = () => {
       }
       reader.readAsDataURL(file)
     }
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -117,13 +117,13 @@ const ProfilePage = () => {
     } finally {
       setIsSaving(false)
     }
-  }
+  };
 
   const handleDeleteAccount = async () => {
     if (deleteConfirmText !== 'FRESHCART') {
       toast.error('Please type FRESHCART to confirm')
       return
-    }
+    };
 
     setIsDeleting(true)
     try {
@@ -137,7 +137,7 @@ const ProfilePage = () => {
       setShowDeleteModal(false)
       setDeleteConfirmText('')
     }
-  }
+  };
 
   if (isLoading || sessionStatus === 'loading') {
     return (

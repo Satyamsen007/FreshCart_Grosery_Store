@@ -14,26 +14,18 @@ export async function GET(req) {
     const skip = (page - 1) * limit;
 
     // Filters
-    const sort = searchParams.get("sort") || "";
     const rating = parseFloat(searchParams.get("rating")) || undefined;
     const offer = searchParams.get("offer") || "";
     const brand = searchParams.get("brand") || "";
     const category = searchParams.get("category") || "all";
     const minPrice = parseFloat(searchParams.get("minPrice")) || undefined;
     const maxPrice = parseFloat(searchParams.get("maxPrice")) || undefined;
-    const search = searchParams.get("search") || "";
 
     // Base filters (excluding unitsSold here)
     const baseQuery = {
       unitsSold: { $gt: 0 }, // Best-selling filter first
       ...(brand && { brand: { $regex: brand, $options: 'i' } }),
       ...(category && category !== "all" && { category }),
-      ...(search && {
-        $or: [
-          { name: { $regex: search, $options: 'i' } },
-          { description: { $regex: search, $options: 'i' } }
-        ]
-      }),
     };
 
     const priceQuery = {};
@@ -58,17 +50,8 @@ export async function GET(req) {
       baseQuery["reviews.rating"] = { $gte: rating };
     }
 
-    // Sort options
-    let sortOption = { unitsSold: -1 }; // default for best-selling
-    if (sort === "price_low_to_high") sortOption = { "variants.regularPrice": 1 };
-    else if (sort === "price_high_to_low") sortOption = { "variants.regularPrice": -1 };
-    else if (sort === "rating") sortOption = { "reviews.rating": -1 };
-    else if (sort === "newest") sortOption = { createdAt: -1 };
-    else if (sort === "popular") sortOption = { unitsSold: -1 };
-
     const [products, totalProducts] = await Promise.all([
       Product.find(baseQuery)
-        .sort(sortOption)
         .skip(skip)
         .limit(limit)
         .lean(),

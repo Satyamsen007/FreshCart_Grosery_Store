@@ -2,7 +2,6 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { assets } from '../../../../public/assets/assets';
 import { useForm } from 'react-hook-form';
-import { Checkbox } from '@/components/ui/checkbox';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from 'react-icons/fa6';
 import { signIn } from 'next-auth/react';

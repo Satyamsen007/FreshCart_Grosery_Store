@@ -1,6 +1,5 @@
-import Image from 'next/image'
-import React from 'react'
-import { assets } from '../../../public/assets/assets'
+import Image from 'next/image';
+import { assets } from '../../../public/assets/assets';
 
 const WhyAreTheBestSection = () => {
   return (

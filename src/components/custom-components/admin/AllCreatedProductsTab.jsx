@@ -1,28 +1,28 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { TbEdit } from "react-icons/tb"
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination"
-import { useEffect, useState } from "react"
-import Image from "next/image"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Edit } from "lucide-react"
-import { RiDeleteBin7Fill } from "react-icons/ri"
-import { Skeleton } from "@/components/ui/skeleton"
-import { useSession } from "next-auth/react"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
-import { useAdminProducts } from "@/hooks/useAdminProducts"
-import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog"
-import { useRouter } from "next/navigation"
-import { toast } from "sonner"
-import axios from "axios"
-import { useDispatch } from "react-redux"
-import { fetchAdminProducts } from "@/store/features/getAdminProductsSlice"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { TbEdit } from "react-icons/tb";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import {  useState } from "react";
+import Image from "next/image";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Edit } from "lucide-react";
+import { RiDeleteBin7Fill } from "react-icons/ri";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useSession } from "next-auth/react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { useAdminProducts } from "@/hooks/useAdminProducts";
+import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { fetchAdminProducts } from "@/store/features/getAdminProductsSlice";
 
-const PRODUCTS_PER_PAGE = 5
+const PRODUCTS_PER_PAGE = 5;
 
 const AllCreatedProductsTab = () => {
-  const { status } = useSession()
-  const [currentPage, setCurrentPage] = useState(1)
-  const { products = [], totalPages = 1, loading, error } = useAdminProducts(currentPage, PRODUCTS_PER_PAGE)
+  const { status } = useSession();
+  const [currentPage, setCurrentPage] = useState(1);
+  const { products = [], totalPages = 1, loading, error } = useAdminProducts(currentPage, PRODUCTS_PER_PAGE);
   const [imageLoaded, setImageLoaded] = useState({});
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);

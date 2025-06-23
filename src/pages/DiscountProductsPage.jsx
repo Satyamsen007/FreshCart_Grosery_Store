@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react'
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel } from "@/components/ui/select"
-import { FaFilter, FaTimes } from 'react-icons/fa'
-import { Button } from '@/components/ui/button'
-import { allCategorysWithAllProducts, babyCareBrands, cleaningGoodBrands, coldDrinksBrands, cookingOilBrands, dairyProductBrands, discountFilterOptions, freshBakeryBrands, freshFruitsBrands, frozenFoodBrands, grainsCerealsBrands, healthDrinkBrands, instantMealsBrands, masalaZoneBrands, organicVagiesBrands, priceFilterOptions, ratingFilterOptions, sweetTreatBrands } from '../../public/assets/assets'
-import DiscountProductCard from '@/components/custom-components/products/DiscountProductCard'
+import React, { useEffect, useState } from 'react';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel } from "@/components/ui/select";
+import { FaFilter, FaTimes } from 'react-icons/fa';
+import { Button } from '@/components/ui/button';
+import { allCategorysWithAllProducts, babyCareBrands, cleaningGoodBrands, coldDrinksBrands, cookingOilBrands, dairyProductBrands, discountFilterOptions, freshBakeryBrands, freshFruitsBrands, frozenFoodBrands, grainsCerealsBrands, healthDrinkBrands, instantMealsBrands, masalaZoneBrands, organicVagiesBrands, priceFilterOptions, ratingFilterOptions, sweetTreatBrands } from '../../public/assets/assets';
+import DiscountProductCard from '@/components/custom-components/products/DiscountProductCard';
 import ProductCardSkeleton from '@/components/custom-components/products/ProductCardSkeleton';
 import { FaFilterCircleXmark } from 'react-icons/fa6';
 import { useSession } from 'next-auth/react';
@@ -97,14 +97,12 @@ const DiscountProductsPage = () => {
     dispatch(fetchDiscountProducts({
       page: 1,
       limit: 15,
-      sort: '',
       rating: undefined,
       offer: '',
       brand: '',
       category: 'all',
       minPrice: undefined,
       maxPrice: undefined,
-      search: ''
     }));
   };
 

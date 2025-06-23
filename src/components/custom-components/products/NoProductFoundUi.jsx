@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { FaSearch, FaSadTear, FaShoppingBasket } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';

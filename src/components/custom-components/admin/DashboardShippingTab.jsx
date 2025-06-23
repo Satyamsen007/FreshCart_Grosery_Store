@@ -6,4 +6,4 @@ const DashboardShippingTab = () => {
   )
 }
 
-export default DashboardShippingTab
+export default DashboardShippingTab;

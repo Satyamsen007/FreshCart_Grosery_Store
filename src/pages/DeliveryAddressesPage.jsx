@@ -1,17 +1,17 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
-import { MapPin, Plus, Home, Briefcase, X, Building2 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { useSession } from 'next-auth/react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchAddresses, addAddress, updateAddress, deleteAddress } from '@/store/features/addressSlice'
-import { toast } from 'sonner'
-import { Skeleton } from "@/components/ui/skeleton"
+import React, { useState, useEffect } from 'react';
+import { MapPin, Plus, Home, Briefcase, X, Building2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useSession } from 'next-auth/react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAddresses, addAddress, updateAddress, deleteAddress } from '@/store/features/addressSlice';
+import { toast } from 'sonner';
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,7 +22,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+} from "@/components/ui/alert-dialog";
 
 const DeliveryAddressesPage = () => {
   const dispatch = useDispatch();

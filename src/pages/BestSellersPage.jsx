@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react'
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup } from "@/components/ui/select"
-import { FaFilter, FaTimes } from 'react-icons/fa'
-import { Button } from '@/components/ui/button'
-import { allCategorysWithAllProducts, babyCareBrands, cleaningGoodBrands, coldDrinksBrands, cookingOilBrands, dairyProductBrands, discountFilterOptions, freshBakeryBrands, freshFruitsBrands, frozenFoodBrands, grainsCerealsBrands, healthDrinkBrands, instantMealsBrands, masalaZoneBrands, organicVagiesBrands, priceFilterOptions, ratingFilterOptions, sweetTreatBrands } from '../../public/assets/assets'
-import ProductCard from '@/components/custom-components/products/ProductCard'
+import React, { useEffect, useState } from 'react';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup } from "@/components/ui/select";
+import { FaFilter, FaTimes } from 'react-icons/fa';
+import { Button } from '@/components/ui/button';
+import { allCategorysWithAllProducts, babyCareBrands, cleaningGoodBrands, coldDrinksBrands, cookingOilBrands, dairyProductBrands, discountFilterOptions, freshBakeryBrands, freshFruitsBrands, frozenFoodBrands, grainsCerealsBrands, healthDrinkBrands, instantMealsBrands, masalaZoneBrands, organicVagiesBrands, priceFilterOptions, ratingFilterOptions, sweetTreatBrands } from '../../public/assets/assets';
+import ProductCard from '@/components/custom-components/products/ProductCard';
 import { useDispatch } from 'react-redux';
 import ProductCardSkeleton from '@/components/custom-components/products/ProductCardSkeleton';
 import { FaFilterCircleXmark } from 'react-icons/fa6';
@@ -97,14 +97,12 @@ const BestSellerPage = () => {
     dispatch(fetchBestSellingProducts({
       page: 1,
       limit: 15,
-      sort: '',
       rating: undefined,
       offer: '',
       brand: '',
       category: 'all',
       minPrice: undefined,
       maxPrice: undefined,
-      search: ''
     }));
   };
 
@@ -427,7 +425,6 @@ const BestSellerPage = () => {
           <PaginationContent className="flex justify-center">
             <PaginationItem>
               <PaginationPrevious
-                href="#"
                 onClick={(e) => {
                   e.preventDefault()
                   changePage(currentPage - 1)
@@ -438,7 +435,6 @@ const BestSellerPage = () => {
             {Array.from({ length: totalPages }).map((_, i) => (
               <PaginationItem key={i}>
                 <PaginationLink
-                  href="#"
                   onClick={(e) => {
                     e.preventDefault()
                     changePage(i + 1)
@@ -452,7 +448,6 @@ const BestSellerPage = () => {
             ))}
             <PaginationItem>
               <PaginationNext
-                href="#"
                 onClick={(e) => {
                   e.preventDefault()
                   changePage(currentPage + 1)

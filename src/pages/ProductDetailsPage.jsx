@@ -11,12 +11,11 @@ import { RiMoneyRupeeCircleFill } from 'react-icons/ri';
 import { useSession } from 'next-auth/react';
 import { parseProductDescription } from '@/helper/parseProductDescription';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAddresses } from '@/store/features/addressSlice';
 import { addToCart, updateCartItem } from '@/store/features/cartSlice';
-import { ShoppingCart, Send, ThumbsUp, MessageCircle, Star, Filter, ChevronDown, Check, X } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Minus, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Minus, Plus } from 'lucide-react';
 import { toast } from 'sonner';
 
 import CommentSection from '@/components/custom-components/CommentSection';

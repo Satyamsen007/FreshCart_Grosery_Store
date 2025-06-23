@@ -1,8 +1,7 @@
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { RiArrowRightLine, RiShoppingBasket2Line, RiShoppingCartLine } from 'react-icons/ri'
+
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { RiArrowRightLine, RiShoppingBasket2Line, RiShoppingCartLine } from 'react-icons/ri';
 
 const EmptyCartUi = () => {
   return (

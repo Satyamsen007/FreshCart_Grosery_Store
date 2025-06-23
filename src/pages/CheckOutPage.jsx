@@ -30,7 +30,6 @@ const CheckOutPage = () => {
     }
   }, [dispatch, session]);
 
-  // Find and set the primary address as selected by default
   useEffect(() => {
     if (addresses.length > 0 && !selectedAddress) {
       const primaryAddress = addresses.find(addr => addr.isPrimary) || addresses[0];
@@ -38,7 +37,6 @@ const CheckOutPage = () => {
     }
   }, [addresses, selectedAddress]);
 
-  // Redirect to cart if no payment method is selected or no items in cart
   useEffect(() => {
     if (cartItems.length === 0) {
       router.push('/cart');

@@ -1,13 +1,12 @@
-import React, { useState, useMemo, useCallback } from 'react'
-import { TiStarFullOutline, TiStarOutline } from 'react-icons/ti'
-import { assets } from '../../../../public/assets/assets'
-import { Heart, Minus, Plus, ShoppingCart } from 'lucide-react'
-import { Rating } from '@mui/material'
-import Image from 'next/image'
-import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, updateCartItem } from '@/store/features/cartSlice'
-import Link from 'next/link'
-import { toast } from 'sonner'
+import React, { useMemo, useCallback } from 'react';
+import { TiStarFullOutline, TiStarOutline } from 'react-icons/ti';
+import { Minus, Plus, ShoppingCart } from 'lucide-react';
+import { Rating } from '@mui/material';
+import Image from 'next/image';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, updateCartItem } from '@/store/features/cartSlice';
+import Link from 'next/link';
+import { toast } from 'sonner';
 
 const DiscountProductCard = ({ product, showLink = true }) => {
   const dispatch = useDispatch();

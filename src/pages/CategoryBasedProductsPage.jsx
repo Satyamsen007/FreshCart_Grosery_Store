@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductByCategory } from '@/store/features/categoryBasedProductSlice';
-import ProductCard from '@/components/custom-components/products/ProductCard'
+import ProductCard from '@/components/custom-components/products/ProductCard';
 import ProductCardSkeleton from '@/components/custom-components/products/ProductCardSkeleton';
 import { useSession } from 'next-auth/react';
 import { Skeleton } from '@/components/ui/skeleton';

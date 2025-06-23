@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import { assets } from '../../public/assets/assets'
+import Image from 'next/image';
+import { assets } from '../../public/assets/assets';
 import { FaBoxOpen } from "react-icons/fa";
 import { IoStorefrontSharp } from "react-icons/io5";
 import { FaCity } from "react-icons/fa6";
@@ -252,4 +252,4 @@ const AboutUsPage = () => {
   )
 }
 
-export default AboutUsPage
+export default AboutUsPage;

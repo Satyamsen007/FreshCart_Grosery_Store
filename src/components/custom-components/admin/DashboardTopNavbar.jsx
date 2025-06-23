@@ -1,13 +1,13 @@
 'use client'
 
-import { useSession } from 'next-auth/react'
-import Image from 'next/image'
-import { assets } from '../../../../public/assets/assets'
-import { Skeleton } from '@/components/ui/skeleton'
-import { BiMenuAltRight } from 'react-icons/bi'
-import { useDispatch } from 'react-redux'
-import { setOpenSideMenu } from '@/store/features/appSlice'
-import { usePathname } from 'next/navigation'
+import { useSession } from 'next-auth/react';
+import Image from 'next/image';
+import { assets } from '../../../../public/assets/assets';
+import { Skeleton } from '@/components/ui/skeleton';
+import { BiMenuAltRight } from 'react-icons/bi';
+import { useDispatch } from 'react-redux';
+import { setOpenSideMenu } from '@/store/features/appSlice';
+import { usePathname } from 'next/navigation';
 
 const DashboardTopNavbar = () => {
   const { data: session, status } = useSession();

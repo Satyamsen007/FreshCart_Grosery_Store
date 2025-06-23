@@ -15,27 +15,23 @@ export const fetchBestSellingProducts = createAsyncThunk(
   async ({
     page = 1,
     limit = 15,
-    sort = '',
     rating = undefined,
     offer = '',
     brand = '',
     category = 'all',
     minPrice = undefined,
     maxPrice = undefined,
-    search = ''
   }, { rejectWithValue, signal }) => {
     try {
       const params = {
         page,
         limit,
-        ...(sort && { sort }),
         ...(rating !== undefined && { rating }),
         ...(offer && { offer }),
         ...(brand && { brand }),
         ...(category && category !== 'all' && { category }),
         ...(minPrice !== undefined && { minPrice }),
         ...(maxPrice !== undefined && { maxPrice }),
-        ...(search && { search })
       };
 
       const queryString = buildQueryString(params);
@@ -57,14 +53,12 @@ const initialState = {
   status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
   error: null,
   filters: {
-    sort: '',
     rating: undefined,
     offer: '',
     brand: '',
     category: 'all',
     minPrice: undefined,
     maxPrice: undefined,
-    search: ''
   }
 };
 

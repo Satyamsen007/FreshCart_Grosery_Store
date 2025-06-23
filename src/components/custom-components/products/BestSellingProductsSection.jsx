@@ -16,7 +16,6 @@ const BestSellingProductsSection = () => {
   const {
     products,
     currentPage,
-    totalPages,
     loading,
     error
   } = useBestSellingProductsRedux(1, 10);

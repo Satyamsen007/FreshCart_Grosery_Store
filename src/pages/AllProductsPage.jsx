@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react'
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, } from "@/components/ui/select"
-import { FaFilter, FaTimes } from 'react-icons/fa'
-import { Button } from '@/components/ui/button'
-import { allCategorysWithAllProducts, babyCareBrands, cleaningGoodBrands, coldDrinksBrands, cookingOilBrands, dairyProductBrands, discountFilterOptions, freshBakeryBrands, freshFruitsBrands, frozenFoodBrands, grainsCerealsBrands, healthDrinkBrands, instantMealsBrands, masalaZoneBrands, organicVagiesBrands, priceFilterOptions, ratingFilterOptions, sweetTreatBrands } from '../../public/assets/assets'
-import ProductCard from '@/components/custom-components/products/ProductCard'
+import React, { useEffect, useState } from 'react';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, } from "@/components/ui/select";
+import { FaFilter, FaTimes } from 'react-icons/fa';
+import { Button } from '@/components/ui/button';
+import { allCategorysWithAllProducts, babyCareBrands, cleaningGoodBrands, coldDrinksBrands, cookingOilBrands, dairyProductBrands, discountFilterOptions, freshBakeryBrands, freshFruitsBrands, frozenFoodBrands, grainsCerealsBrands, healthDrinkBrands, instantMealsBrands, masalaZoneBrands, organicVagiesBrands, priceFilterOptions, ratingFilterOptions, sweetTreatBrands } from '../../public/assets/assets';
+import ProductCard from '@/components/custom-components/products/ProductCard';
 import { useAllProductsRedux } from '@/hooks/useAllProducts';
 import { useDispatch } from 'react-redux';
 import { fetchAllProducts, resetFilters, setFilters, setPage } from '@/store/features/getAllProductsSlice';
@@ -123,7 +123,6 @@ const AllProductsPage = () => {
   const isLoading = loading || status === 'loading'
   return (
     <div className="px-4 py-8 w-[90%] mx-auto dark:bg-gray-900">
-
       {
         status === 'loading' ? (
           <div className="mb-5 w-[20%]">
@@ -422,7 +421,6 @@ const AllProductsPage = () => {
           <PaginationContent className="flex justify-center">
             <PaginationItem>
               <PaginationPrevious
-                href="#"
                 onClick={(e) => {
                   e.preventDefault()
                   changePage(currentPage - 1)
@@ -433,7 +431,6 @@ const AllProductsPage = () => {
             {Array.from({ length: totalPages }).map((_, i) => (
               <PaginationItem key={i}>
                 <PaginationLink
-                  href="#"
                   onClick={(e) => {
                     e.preventDefault()
                     changePage(i + 1)
@@ -447,7 +444,6 @@ const AllProductsPage = () => {
             ))}
             <PaginationItem>
               <PaginationNext
-                href="#"
                 onClick={(e) => {
                   e.preventDefault()
                   changePage(currentPage + 1)

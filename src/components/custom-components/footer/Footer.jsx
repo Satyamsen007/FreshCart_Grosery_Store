@@ -1,12 +1,11 @@
 'use client'
 
-import Image from 'next/image'
-import React from 'react'
-import { assets } from '../../../../public/assets/assets'
-import { FiInstagram } from 'react-icons/fi'
-import { FaFacebook, FaTwitter } from 'react-icons/fa'
-import { IoLogoLinkedin } from 'react-icons/io5'
-import { useRouter } from 'next/navigation'
+import Image from 'next/image';
+import { assets } from '../../../../public/assets/assets';
+import { FiInstagram } from 'react-icons/fi';
+import { FaFacebook, FaTwitter } from 'react-icons/fa';
+import { IoLogoLinkedin } from 'react-icons/io5';
+import { useRouter } from 'next/navigation';
 
 const Footer = () => {
   const router = useRouter();

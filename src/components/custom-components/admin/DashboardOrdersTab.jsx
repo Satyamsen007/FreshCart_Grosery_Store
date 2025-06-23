@@ -1,28 +1,28 @@
 'use client'
 
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination"
-import { useState } from "react"
-import Image from "next/image"
-import { RiDeleteBin5Line } from "react-icons/ri"
-import { Skeleton } from "@/components/ui/skeleton"
-import { useSession } from "next-auth/react"
-import { useAdminOrders } from "@/hooks/useAdminOrders"
-import { assets } from "../../../../public/assets/assets"
-import { FiPackage } from "react-icons/fi"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { useDispatch } from "react-redux"
-import { deleteOrder, updateOrderStatus, updatePaymentStatus, fetchAdminOrders } from "@/store/features/adminOrdersSlice"
-import { toast } from "sonner"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import { useState } from "react";
+import Image from "next/image";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useSession } from "next-auth/react";
+import { useAdminOrders } from "@/hooks/useAdminOrders";
+import { assets } from "../../../../public/assets/assets";
+import { FiPackage } from "react-icons/fi";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useDispatch } from "react-redux";
+import { deleteOrder, updateOrderStatus, updatePaymentStatus } from "@/store/features/adminOrdersSlice";
+import { toast } from "sonner";
 
-const PRODUCTS_PER_PAGE = 5
+const PRODUCTS_PER_PAGE = 5;
 
 const DashboardOrdersTab = () => {
   const { status } = useSession()
   const [currentPage, setCurrentPage] = useState(1)
   const [isUpdating, setIsUpdating] = useState(false)
   const dispatch = useDispatch()
-  const { orders = [], totalPages = 1, loading, error, deletingOrderId } = useAdminOrders(currentPage, PRODUCTS_PER_PAGE)
+  const { orders = [], totalPages = 1, loading, deletingOrderId } = useAdminOrders(currentPage, PRODUCTS_PER_PAGE);
 
   const changePage = (page) => {
     if (page >= 1 && page <= totalPages) {

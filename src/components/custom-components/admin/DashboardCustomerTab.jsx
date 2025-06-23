@@ -1,32 +1,31 @@
-'use client'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination"
-import { useState } from "react"
-import { Skeleton } from "@/components/ui/skeleton"
-import { useSession } from "next-auth/react"
-import { useAdminCustomers } from "@/hooks/useAdminCustomers"
-import { format } from 'date-fns'
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
-import { MapPin, Phone, Mail, Users } from "lucide-react"
-import Image from "next/image"
-import { assets } from "../../../../public/assets/assets"
-import { FiPackage } from "react-icons/fi"
+'use client';
 
-const CUSTOMERS_PER_PAGE = 5
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import { useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useSession } from "next-auth/react";
+import { useAdminCustomers } from "@/hooks/useAdminCustomers";
+import { format } from 'date-fns';
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { MapPin, Phone, Mail, Users } from "lucide-react";
+import Image from "next/image";
+import { assets } from "../../../../public/assets/assets";
+
+const CUSTOMERS_PER_PAGE = 5;
 
 const DashboardCustomerTab = () => {
-  const { status } = useSession()
-  const [currentPage, setCurrentPage] = useState(1)
-  const { customers = [], totalPages = 1, loading, error } = useAdminCustomers(currentPage, CUSTOMERS_PER_PAGE)
-  const [imageLoaded, setImageLoaded] = useState({});
+  const { status } = useSession();
+  const [currentPage, setCurrentPage] = useState(1);
+  const { customers = [], totalPages = 1, loading, error } = useAdminCustomers(currentPage, CUSTOMERS_PER_PAGE);
 
   const changePage = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page)
     }
-  }
+  };
 
-  const isLoading = loading || status === 'loading'
+  const isLoading = loading || status === 'loading';
 
   if (error) {
     return (

@@ -1,7 +1,6 @@
 'use client'
 
-import Image from 'next/image'
-import React from 'react'
+import Image from 'next/image';
 import { assets } from '../../public/assets/assets'
 import { BsHeadset, BsInstagram } from "react-icons/bs";
 import { IoMail } from "react-icons/io5";

@@ -5,10 +5,10 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { IoLogoLinkedin } from "react-icons/io5";
 import Image from "next/image";
-import { assets, demoProducts, multipleCategorySection } from "../../public/assets/assets";
+import { assets, multipleCategorySection } from "../../public/assets/assets";
 import { Typewriter } from "react-simple-typewriter";
 import { RiArrowRightLine } from "react-icons/ri";
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 import WhyAreTheBestSection from "@/components/custom-components/WhyAreTheBestSection";
 import TestimonialSlider from "@/components/custom-components/TestimonialSlider";
 import HappyClientsSection from "@/components/custom-components/HappyClientsSection";
@@ -18,13 +18,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const HomePage = () => {
-  const router = useRouter()
+  const router = useRouter();
   const socialLinks = [
     { icon: <FiInstagram />, key: 'instagram' },
     { icon: <FaFacebook />, key: 'facebook' },
     { icon: <FaTwitter />, key: 'twitter' },
     { icon: <IoLogoLinkedin />, key: 'linkedin' },
-  ]
+  ];
 
   return (
     <div className='overflow-hidden dark:bg-gray-900 transition-colors duration-300'>
