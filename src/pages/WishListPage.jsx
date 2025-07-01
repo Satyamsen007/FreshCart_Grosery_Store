@@ -1,5 +1,6 @@
 'use client'
 
+import dynamic from 'next/dynamic';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromWishlist } from '@/store/features/wishlistSlice';
 import { Heart, Trash2 } from 'lucide-react';
@@ -16,7 +17,8 @@ import { toast } from 'sonner';
 const WishlistPage = () => {
   const dispatch = useDispatch();
   const { wishlistItems = [], loading } = useSelector((state) => state.wishlist);
-  const { status } = useSession();
+  // Safely destructure session status with default value
+  const { status = 'unauthenticated' } = useSession() || {};
   const isLoading = loading || status === 'loading';
 
   const handleRemoveFromWishlist = (productId) => {
@@ -128,4 +130,12 @@ const WishlistPage = () => {
   );
 };
 
-export default WishlistPage;
+// Export with dynamic import for client-side only rendering
+export default dynamic(() => Promise.resolve(WishlistPage), { 
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--primaryColor)]"></div>
+    </div>
+  )
+});
