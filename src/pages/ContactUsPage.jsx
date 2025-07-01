@@ -7,14 +7,12 @@ import { IoMail } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
 import { useForm } from 'react-hook-form';
 import { BiMailSend } from "react-icons/bi";
 import { FaTwitter } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaLinkedinIn } from 'react-icons/fa';
 import dynamic from 'next/dynamic';
-import ContactPageMap from '@/components/custom-components/ContactPageMap';
 
 const MapComponent = dynamic(
   () => import('../components/custom-components/ContactPageMap'),
@@ -172,7 +170,7 @@ const ContactUsPage = () => {
             {/* Right side: Map and Info */}
             <div className="flex flex-col gap-4 z-50">
               <div className="h-72 w-full rounded -z-50 overflow-hidden">
-                <ContactPageMap position={position} />
+                <MapComponent position={position} />
               </div>
 
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
