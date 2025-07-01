@@ -1,5 +1,6 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductByCategory } from '@/store/features/categoryBasedProductSlice';
@@ -16,7 +17,10 @@ const CategoryBasedProductsPage = ({ category }) => {
   const dispatch = useDispatch();
   const { status } = useSession();
   const router = useRouter();
-  const { product, loading, error } = useSelector(state => state.categoryBasedProduct);
+  // Safely access Redux state with fallbacks
+  const { product = [], loading = false, error = null } = useSelector(
+    state => state?.categoryBasedProduct || {}
+  );
 
   const iconVariants = {
     initial: { y: 0, rotate: 0 },
@@ -187,4 +191,12 @@ const CategoryBasedProductsPage = ({ category }) => {
   )
 }
 
-export default CategoryBasedProductsPage;
+// Export with dynamic import for client-side only rendering
+export default dynamic(() => Promise.resolve(CategoryBasedProductsPage), { 
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--primaryColor)]"></div>
+    </div>
+  )
+});

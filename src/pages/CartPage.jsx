@@ -1,5 +1,6 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import React, { useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateCartItem, removeFromCart } from '@/store/features/cartSlice';
@@ -15,7 +16,8 @@ import CartPageSkeleton from '@/components/custom-components/skeletons/CartPageS
 
 const CartPage = () => {
   const dispatch = useDispatch();
-  const { items: cartItems } = useSelector(state => state.cart);
+  // Safely access Redux state with fallbacks
+  const { items: cartItems = [] } = useSelector(state => state?.cart || {});
   const { status } = useSession();
 
   // Memoized calculations
@@ -123,4 +125,12 @@ const CartPage = () => {
   );
 };
 
-export default React.memo(CartPage);
+// Export with dynamic import for client-side only rendering
+export default dynamic(() => Promise.resolve(React.memo(CartPage)), { 
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--primaryColor)]"></div>
+    </div>
+  )
+});
