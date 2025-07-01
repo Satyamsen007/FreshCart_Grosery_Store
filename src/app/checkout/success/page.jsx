@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,10 +10,11 @@ import { toast } from 'sonner';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 
-export default function CheckoutSuccessPage() {
+// Wrap the main component in a Suspense boundary
+function CheckoutSuccessContent() {
+  const searchParams = useSearchParams();
   const router = useRouter();
   const dispatch = useDispatch();
-  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -98,33 +99,46 @@ export default function CheckoutSuccessPage() {
         </motion.h1>
         <motion.p
           className="text-[var(--textColor)]/70 dark:text-gray-300 text-sm mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-        >
-          Awesome! Your order is confirmed and on its way to becoming something special. Keep an eye on your inbox for all the exciting details!
-        </motion.p>
-        <motion.div
-          className="space-y-4"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
+          Thank you for your order! We've received it and are processing it now.
+          You'll receive a confirmation email with your order details shortly.
+        </motion.p>
+        <motion.div
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+        >
           <Button
+            variant="outline"
+            className="w-full sm:w-auto"
             onClick={() => router.push('/orders')}
-            className="w-full cursor-pointer bg-[var(--primaryColor)] text-white hover:bg-[var(--primaryColor)]/90 dark:bg-[#FFB74D] dark:hover:bg-[#FFB74D]/90"
           >
             View Orders
           </Button>
           <Button
+            className="w-full sm:w-auto"
             onClick={() => router.push('/')}
-            variant="outline"
-            className="w-full cursor-pointer border-[var(--primaryColor)] text-[var(--primaryColor)] hover:bg-[var(--primaryColor)]/10 dark:border-[#FFB74D] dark:text-[#FFB74D] dark:hover:bg-[#FFB74D]/10"
           >
             Continue Shopping
           </Button>
         </motion.div>
       </div>
     </div>
+  );
+}
+
+export default function CheckoutSuccessPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center dark:bg-gray-900">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-[var(--primaryColor)] dark:border-[#FFB74D]"></div>
+      </div>
+    }>
+      <CheckoutSuccessContent />
+    </Suspense>
   );
 }
