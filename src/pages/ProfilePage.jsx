@@ -23,6 +23,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import dynamic from 'next/dynamic';
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -500,4 +501,12 @@ const ProfilePage = () => {
   )
 }
 
-export default ProfilePage 
+// Export with dynamic import for client-side only rendering
+export default dynamic(() => Promise.resolve(ProfilePage), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--primaryColor)]"></div>
+    </div>
+  )
+});

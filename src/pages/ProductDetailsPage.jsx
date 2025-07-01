@@ -1,4 +1,6 @@
 'use client'
+
+import dynamic from 'next/dynamic';
 import React, { useCallback, useMemo, useState, useEffect, useRef } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useProduct } from '@/hooks/useProduct';
@@ -535,4 +537,12 @@ const ProductDetailsPage = ({ productCategory, productId }) => {
   );
 }
 
-export default React.memo(ProductDetailsPage);
+// Export with dynamic import for client-side only rendering
+export default dynamic(() => Promise.resolve(ProductDetailsPage), { 
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--primaryColor)]"></div>
+    </div>
+  )
+});

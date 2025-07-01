@@ -22,6 +22,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useSession } from 'next-auth/react';
+import dynamic from 'next/dynamic';
 
 const OrderStatusIcon = ({ status }) => {
   switch (status) {
@@ -260,4 +261,12 @@ const OrdersPage = () => {
   );
 };
 
-export default OrdersPage;
+// Export with dynamic import for client-side only rendering
+export default dynamic(() => Promise.resolve(OrdersPage), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--primaryColor)]"></div>
+    </div>
+  )
+});
