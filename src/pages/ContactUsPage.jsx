@@ -7,21 +7,22 @@ import { IoMail } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useForm } from 'react-hook-form';
 import { BiMailSend } from "react-icons/bi";
 import { FaTwitter } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaLinkedinIn } from 'react-icons/fa';
+import dynamic from 'next/dynamic';
+import ContactPageMap from '@/components/custom-components/ContactPageMap';
 
-// Fix default icon paths for Leaflet markers
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-});
+const MapComponent = dynamic(
+  () => import('../components/custom-components/ContactPageMap'),
+  {
+    ssr: false,
+    loading: () => <p>Loading map...</p>
+  }
+);
 const ContactUsPage = () => {
   const position = [22.62808147427098, 88.41374893510228]
   const { register, handleSubmit, reset } = useForm();
@@ -171,25 +172,7 @@ const ContactUsPage = () => {
             {/* Right side: Map and Info */}
             <div className="flex flex-col gap-4 z-50">
               <div className="h-72 w-full rounded -z-50 overflow-hidden">
-                <MapContainer center={position} zoom={13} scrollWheelZoom={true} className="h-full w-full">
-                  <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  />
-                  <Marker position={position}>
-                    <Popup>
-                      <div className="text-center">
-                        <h2 className="text-sm text-[var(--textColor)] font-semibold dark:text-gray-200">FreshCart Grosery Store</h2>
-                        <img
-                          src="/assets/ourStoreImage.png"
-                          alt="Office Location"
-                          className="w-full h-20 object-contain mt-2 rounded dark:brightness-90"
-                        />
-                        <p className="text-xs font-semibold text-[var(--textColor)] dark:text-gray-300">Visit us for fresh groceries daily!</p>
-                      </div>
-                    </Popup>
-                  </Marker>
-                </MapContainer>
+                <ContactPageMap position={position} />
               </div>
 
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
