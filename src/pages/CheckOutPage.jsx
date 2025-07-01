@@ -1,5 +1,6 @@
-'use client'
+'use client';
 
+import dynamic from 'next/dynamic';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
@@ -17,10 +18,11 @@ const CheckOutPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { data: session, status: sessionStatus } = useSession();
-  const cartItems = useSelector(state => state.cart.items);
-  const selectedPayment = useSelector(state => state.cart.selectedPaymentMethod);
-  const appliedCoupon = useSelector(state => state.cart.appliedCoupon);
-  const { addresses, loading: addressesLoading } = useSelector(state => state.address);
+  // Safely access Redux state with fallbacks
+  const cartItems = useSelector(state => state?.cart?.items || []);
+  const selectedPayment = useSelector(state => state?.cart?.selectedPaymentMethod || '');
+  const appliedCoupon = useSelector(state => state?.cart?.appliedCoupon || null);
+  const { addresses = [], loading: addressesLoading = false } = useSelector(state => state?.address || {});
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [placingOrder, setPlacingOrder] = useState(false);
 
@@ -389,4 +391,12 @@ const CheckOutPage = () => {
   );
 };
 
-export default CheckOutPage;
+// Export with dynamic import for client-side only rendering
+export default dynamic(() => Promise.resolve(CheckOutPage), { 
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--primaryColor)]"></div>
+    </div>
+  )
+});

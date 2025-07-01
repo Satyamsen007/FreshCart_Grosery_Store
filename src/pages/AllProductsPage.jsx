@@ -1,5 +1,6 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import React, { useEffect, useState } from 'react';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, } from "@/components/ui/select";
 import { FaFilter, FaTimes } from 'react-icons/fa';
@@ -17,13 +18,15 @@ import { Pagination, PaginationContent, PaginationItem, PaginationLink, Paginati
 import { Skeleton } from '@/components/ui/skeleton';
 import Link from 'next/link';
 
+// Wrap the component with dynamic import and ssr: false
 const AllProductsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All Products');
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedPrice, setSelectedPrice] = useState('');
   const [selectedRating, setSelectedRating] = useState('');
   const [selectedOffer, setSelectedOffer] = useState('');
-  const { status } = useSession();
+  const { data: session, status } = useSession();
+  
 
   const {
     products,
@@ -458,4 +461,5 @@ const AllProductsPage = () => {
   )
 }
 
-export default AllProductsPage;
+// Export with dynamic import for client-side only rendering
+export default dynamic(() => Promise.resolve(AllProductsPage), { ssr: false });

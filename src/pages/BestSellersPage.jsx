@@ -1,5 +1,6 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import React, { useEffect, useState } from 'react';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup } from "@/components/ui/select";
 import { FaFilter, FaTimes } from 'react-icons/fa';
@@ -16,13 +17,14 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useBestSellingProductsRedux } from '@/hooks/useBestSellingProducts';
 import { fetchBestSellingProducts, resetFilters, setFilters, setPage } from '@/store/features/getBestSellingProductsSlice';
 
-const BestSellerPage = () => {
+const BestSellersPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All Products');
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedPrice, setSelectedPrice] = useState('');
   const [selectedRating, setSelectedRating] = useState('');
   const [selectedOffer, setSelectedOffer] = useState('');
-  const { status } = useSession();
+  const { data: session, status } = useSession();
+  
 
   const {
     products,
@@ -462,4 +464,4 @@ const BestSellerPage = () => {
   )
 }
 
-export default BestSellerPage;
+export default dynamic(() => Promise.resolve(BestSellersPage), { ssr: false });
