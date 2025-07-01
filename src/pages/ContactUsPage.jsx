@@ -18,7 +18,9 @@ const MapComponent = dynamic(
   () => import('../components/custom-components/ContactPageMap'),
   {
     ssr: false,
-    loading: () => <p>Loading map...</p>
+    loading: () => (
+      <div className="w-full h-full bg-gray-200 dark:bg-gray-700 animate-pulse rounded"></div>
+    )
   }
 );
 const ContactUsPage = () => {
