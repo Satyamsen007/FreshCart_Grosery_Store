@@ -6,25 +6,13 @@ import { BsHeadset, BsInstagram } from "react-icons/bs";
 import { IoMail } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { BiSolidPhoneCall } from "react-icons/bi";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useForm } from 'react-hook-form';
 import { BiMailSend } from "react-icons/bi";
 import { FaTwitter } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaLinkedinIn } from 'react-icons/fa';
-import dynamic from 'next/dynamic';
 
-const MapComponent = dynamic(
-  () => import('../components/custom-components/ContactPageMap'),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="w-full h-full bg-gray-200 dark:bg-gray-700 animate-pulse rounded"></div>
-    )
-  }
-);
 const ContactUsPage = () => {
-  const position = [22.62808147427098, 88.41374893510228]
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
@@ -170,50 +158,44 @@ const ContactUsPage = () => {
             </form>
 
             {/* Right side: Map and Info */}
-            <div className="flex flex-col gap-4 z-50">
-              <div className="h-72 w-full rounded -z-50 overflow-hidden">
-                <MapComponent position={position} />
-              </div>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm h-[500px]">
+              <h3 className="text-[var(--primaryColor)] dark:text-[#FFB74D] text-lg font-semibold mb-3">Call Us</h3>
+              <p className="mb-2 text-sm dark:text-gray-300">Call us between 8:00am – 10:00pm.</p>
+              <p className="font-medium text-sm dark:text-gray-200 hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] transition-colors duration-200 cursor-pointer">+1 (800) 123-4567</p>
 
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-                <h3 className="text-[var(--primaryColor)] dark:text-[#FFB74D] text-lg font-semibold mb-3">Call Us</h3>
-                <p className="mb-2 text-sm dark:text-gray-300">Call us between 8:00am – 10:00pm.</p>
-                <p className="font-medium text-sm dark:text-gray-200 hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] transition-colors duration-200 cursor-pointer">+1 (800) 123-4567</p>
+              <h3 className="text-[var(--primaryColor)] dark:text-[#FFB74D] font-semibold text-lg mt-6 mb-3">Chat with us</h3>
+              <ul className="text-sm space-y-3 dark:text-gray-300">
+                <li className='flex items-center gap-2 hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] transition-colors duration-200 cursor-pointer group'>
+                  <BiMailSend className="text-[var(--primaryColor)] dark:text-[#FFB74D] group-hover:rotate-12 transition-transform duration-300" />
+                  Send us your thoughts via chat</li>
+                <li className='flex items-center gap-2 hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] transition-colors duration-200 cursor-pointer group'>
+                  <FaTwitter className="text-[var(--primaryColor)] dark:text-[#FFB74D] group-hover:rotate-12 transition-transform duration-300" />
+                  Message us on Twitter</li>
+                <li className='flex items-center gap-2 hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] transition-colors duration-200 cursor-pointer group'>
+                  <FaFacebookF className="text-[var(--primaryColor)] dark:text-[#FFB74D] group-hover:rotate-12 transition-transform duration-300" />
+                  Message us on Facebook</li>
+              </ul>
 
-                <h3 className="text-[var(--primaryColor)] dark:text-[#FFB74D] font-semibold text-lg mt-6 mb-3">Chat with us</h3>
-                <ul className="text-sm space-y-3 dark:text-gray-300">
-                  <li className='flex items-center gap-2 hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] transition-colors duration-200 cursor-pointer group'>
-                    <BiMailSend className="text-[var(--primaryColor)] dark:text-[#FFB74D] group-hover:rotate-12 transition-transform duration-300" />
-                    Send us your thoughts via chat</li>
-                  <li className='flex items-center gap-2 hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] transition-colors duration-200 cursor-pointer group'>
-                    <FaTwitter className="text-[var(--primaryColor)] dark:text-[#FFB74D] group-hover:rotate-12 transition-transform duration-300" />
-                    Message us on Twitter</li>
-                  <li className='flex items-center gap-2 hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] transition-colors duration-200 cursor-pointer group'>
-                    <FaFacebookF className="text-[var(--primaryColor)] dark:text-[#FFB74D] group-hover:rotate-12 transition-transform duration-300" />
-                    Message us on Facebook</li>
-                </ul>
-
-                <div className="flex gap-3 mt-6">
-                  <div className="w-8 h-8 flex justify-center items-center rounded-full text-white bg-[var(--primaryColor)] dark:bg-gray-700 hover:bg-transparent hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] hover:border hover:border-[var(--primaryColor)] dark:hover:border-[#FFB74D] transition-all duration-200 cursor-pointer group">
-                    <span className="group-hover:-rotate-y-180 transition-transform duration-500">
-                      <BsInstagram />
-                    </span>
-                  </div>
-                  <div className="w-8 h-8 flex justify-center items-center rounded-full text-white bg-[var(--primaryColor)] dark:bg-gray-700 hover:bg-transparent hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] hover:border hover:border-[var(--primaryColor)] dark:hover:border-[#FFB74D] transition-all duration-200 cursor-pointer group">
-                    <span className="group-hover:-rotate-y-180 transition-transform duration-500">
-                      <FaFacebookF />
-                    </span>
-                  </div>
-                  <div className="w-8 h-8 flex justify-center items-center rounded-full text-white bg-[var(--primaryColor)] dark:bg-gray-700 hover:bg-transparent hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] hover:border hover:border-[var(--primaryColor)] dark:hover:border-[#FFB74D] transition-all duration-200 cursor-pointer group">
-                    <span className="group-hover:-rotate-y-180 transition-transform duration-500">
-                      <FaTwitter />
-                    </span>
-                  </div>
-                  <div className="w-8 h-8 flex justify-center items-center rounded-full text-white bg-[var(--primaryColor)] dark:bg-gray-700 hover:bg-transparent hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] hover:border hover:border-[var(--primaryColor)] dark:hover:border-[#FFB74D] transition-all duration-200 cursor-pointer group">
-                    <span className="group-hover:-rotate-y-180 transition-transform duration-500">
-                      <FaLinkedinIn />
-                    </span>
-                  </div>
+              <div className="flex gap-3 mt-6">
+                <div className="w-8 h-8 flex justify-center items-center rounded-full text-white bg-[var(--primaryColor)] dark:bg-gray-700 hover:bg-transparent hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] hover:border hover:border-[var(--primaryColor)] dark:hover:border-[#FFB74D] transition-all duration-200 cursor-pointer group">
+                  <span className="group-hover:-rotate-y-180 transition-transform duration-500">
+                    <BsInstagram />
+                  </span>
+                </div>
+                <div className="w-8 h-8 flex justify-center items-center rounded-full text-white bg-[var(--primaryColor)] dark:bg-gray-700 hover:bg-transparent hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] hover:border hover:border-[var(--primaryColor)] dark:hover:border-[#FFB74D] transition-all duration-200 cursor-pointer group">
+                  <span className="group-hover:-rotate-y-180 transition-transform duration-500">
+                    <FaFacebookF />
+                  </span>
+                </div>
+                <div className="w-8 h-8 flex justify-center items-center rounded-full text-white bg-[var(--primaryColor)] dark:bg-gray-700 hover:bg-transparent hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] hover:border hover:border-[var(--primaryColor)] dark:hover:border-[#FFB74D] transition-all duration-200 cursor-pointer group">
+                  <span className="group-hover:-rotate-y-180 transition-transform duration-500">
+                    <FaTwitter />
+                  </span>
+                </div>
+                <div className="w-8 h-8 flex justify-center items-center rounded-full text-white bg-[var(--primaryColor)] dark:bg-gray-700 hover:bg-transparent hover:text-[var(--primaryColor)] dark:hover:text-[#FFB74D] hover:border hover:border-[var(--primaryColor)] dark:hover:border-[#FFB74D] transition-all duration-200 cursor-pointer group">
+                  <span className="group-hover:-rotate-y-180 transition-transform duration-500">
+                    <FaLinkedinIn />
+                  </span>
                 </div>
               </div>
             </div>
