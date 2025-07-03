@@ -80,21 +80,24 @@ FreshCart is a cutting-edge online grocery delivery platform built with Next.js 
 - [PostCSS](https://postcss.org/) - CSS Processing
 
 ## 📁 Project Structure
+```
 src/
-├── app/                 # Next.js App Router pages
-│   ├── (admin)/        # Admin dashboard routes
-│   ├── (app)/          # Main app routes
-│   ├── (authPage)/     # Authentication routes
-│   └── api/            # API routes
-├── components/         # React components
+├── app/                  # Next.js App Router pages
+│   ├── (admin)/          # Admin dashboard routes
+│   ├── (app)/            # Main app routes
+│   ├── (authPage)/       # Authentication routes
+│   └── api/              # API routes
+├── components/           # React components
 │   ├── custom-components/ # Custom UI components
-│   └── ui/             # Shared UI components
-├── context/            # React context providers
-├── hooks/              # Custom React hooks
-├── lib/                # Utility functions
-├── models/             # MongoDB models
-├── store/              # Redux store and slices
-└── pages/              # Page components
+│   └── ui/               # Shared UI components
+├── context/              # React context providers
+├── hooks/                # Custom React hooks
+├── lib/                  # Utility functions
+├── models/               # MongoDB models
+├── store/                # Redux store and slices
+└── pages/                # Page components
+```
+
 
 ## 🚀 Getting Started
 
