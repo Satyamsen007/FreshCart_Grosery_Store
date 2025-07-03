@@ -18,6 +18,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { assets } from '../../../public/assets/assets';
 
 const CommentSection = ({ productId, reviews = [] }) => {
   const { data: session } = useSession();
@@ -287,7 +288,7 @@ const CommentSection = ({ productId, reviews = [] }) => {
           <div className="flex gap-4 items-start">
             <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
               <Image
-                src={session?.user?.avatar?.url || session?.user?.image || '/assets/userDefaultAvatar.png'}
+                src={session?.user?.avatar?.url || session?.user?.image || assets.userDefaultAvatar}
                 alt={`${session?.user?.name || 'User'}'s profile picture`}
                 width={40}
                 height={40}
@@ -418,7 +419,7 @@ const CommentSection = ({ productId, reviews = [] }) => {
             >
               <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
                 <Image
-                  src={review?.reviewCustommer?.avatar?.url || review?.user?.image || '/assets/userDefaultAvatar.png'}
+                  src={review?.reviewCustommer?.avatar?.url || review?.user?.image || assets.userDefaultAvatar}
                   alt={`${review?.reviewCustommer?.fullName || 'User'}'s profile picture`}
                   width={40}
                   height={40}
