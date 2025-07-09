@@ -415,9 +415,9 @@ const CommentSection = ({ productId, reviews = [] }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="flex gap-4 p-6 rounded-lg border-2 border-[var(--primaryColor)]/30 dark:border-gray-700 bg-[var(--primaryColor)]/5 dark:bg-gray-800/50"
+              className="flex max-md:flex-col gap-4 p-6 rounded-lg border-2 border-[var(--primaryColor)]/30 dark:border-gray-700 bg-[var(--primaryColor)]/5 dark:bg-gray-800/50"
             >
-              <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+              <div className="w-10 h-10 max-md:size-16 max-md:mx-auto rounded-full overflow-hidden flex-shrink-0">
                 <Image
                   src={review?.reviewCustommer?.avatar?.url || review?.user?.image || assets.userDefaultAvatar}
                   alt={`${review?.reviewCustommer?.fullName || 'User'}'s profile picture`}
@@ -427,19 +427,20 @@ const CommentSection = ({ productId, reviews = [] }) => {
                 />
               </div>
               <div className="flex-1">
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between max-md:justify-center mb-2">
                   <div className="flex items-center gap-2">
+                    <CheckCircle2 className='text-sm text-[var(--primaryColor)] dark:text-[#FFB74D] size-4 md:hidden' />
                     <h4 className="font-medium text-[var(--textColor)] dark:text-gray-100 flex items-center">
                       {review?.reviewCustommer?.fullName || 'Anonymous User'}
                     </h4>
-                    <div className="flex items-center gap-1 text-sm text-[var(--primaryColor)] dark:text-[#FFB74D]">
+                    <div className="flex max-md:hidden items-center gap-1 text-sm text-[var(--primaryColor)] dark:text-[#FFB74D]">
                       <CheckCircle2 size={16} />
                       <span>Verified</span>
                     </div>
                     <RatingStars rating={review.rating} readonly size={14} />
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-[var(--textColor)]/60 dark:text-gray-400 flex items-center gap-1">
+                    <span className="text-sm text-[var(--textColor)]/60 max-md:hidden dark:text-gray-400 flex items-center gap-1">
                       <Calendar size={14} />
                       {new Date(review.createdAt).toLocaleDateString('en-US', {
                         year: 'numeric',
@@ -535,7 +536,7 @@ const CommentSection = ({ productId, reviews = [] }) => {
                   </div>
                 ) : (
                   <>
-                    <p className="text-[var(--textColor)]/90 dark:text-gray-300 mt-2">{review.reviewComment}</p>
+                    <p className="text-[var(--textColor)]/90 dark:text-gray-300 mt-2 max-md:text-sm">{review.reviewComment}</p>
                     <div className="flex items-center gap-4 mt-3">
                       <button
                         onClick={() => handleLikeComment(review._id)}

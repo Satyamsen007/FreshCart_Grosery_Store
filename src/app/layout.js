@@ -7,9 +7,10 @@ import { Toaster } from "@/components/ui/sonner";
 import ThemeToggler from "@/components/custom-components/ThemeToggler";
 
 const poppins = Poppins({
-  variable: "--font-poppins",
-  weight: ['500', '600', '700', '800', '900', '300'],
   subsets: ["latin"],
+  weight: ["300", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
+  display: "swap",
 });
 
 export const metadata = {
@@ -34,7 +35,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <AuthProvider>
         <body
-          className={`${poppins.variable} font-poppins dark:bg-gray-900`}
+          className={`${poppins.className} font-poppins dark:bg-gray-900`}
         >
           <ThemeProvider
             attribute="class"
