@@ -13,6 +13,20 @@
 
 FreshCart is a cutting-edge online grocery delivery platform built with Next.js 15, offering a seamless and intuitive shopping experience. Our platform combines modern web technologies with user-centric design to revolutionize how people shop for groceries online.
 
+---
+## 🚀 Live Demo
+
+🌐 [View FreshCart Online](https://fresh-cart-mu-ten.vercel.app)
+
+---
+
+## 📸 Preview
+
+![FreshCart Screenshot](https://res.cloudinary.com/dw0kaofhj/image/upload/v1752212583/Screenshot_2025-07-11_111223_orpisw.png)
+
+---
+
+
 ### 🌟 Why FreshCart?
 
 - 🚀 Lightning-fast performance with Next.js 15.3.1
