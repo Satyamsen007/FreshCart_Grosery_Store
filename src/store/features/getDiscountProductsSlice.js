@@ -36,7 +36,6 @@ export const fetchDiscountProducts = createAsyncThunk(
 
       const queryString = buildQueryString(params);
       const response = await axios.get(`/api/discount-products${queryString}`, { signal });
-      console.log(response);
 
       return response.data;
     } catch (error) {

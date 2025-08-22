@@ -15,10 +15,6 @@ export const useAdminProducts = (page = 1, limit = 6) => {
     return () => controller.abort();
   }, [dispatch, page, limit]);
 
-  useEffect(() => {
-    console.log('Current products state:', productsState);
-  }, [productsState]);
-  // Safely return with defaults
   return {
     products: productsState?.items || [],
     totalPages: productsState?.totalPages || 1,

@@ -7,7 +7,6 @@ export const fetchAdminProducts = createAsyncThunk(
   async ({ page = 1, limit = 6 }, { rejectWithValue }) => {
     try {
       const response = await axios.get(`/api/admin-products?page=${page}&limit=${limit}`);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

@@ -11,7 +11,6 @@ export const fetchOrders = createAsyncThunk(
       if (!data.success) {
         return rejectWithValue(data.message);
       }
-      console.log(data.orders);
       return data.orders;
     } catch (error) {
       return rejectWithValue('Failed to fetch orders');
