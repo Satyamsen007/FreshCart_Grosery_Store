@@ -95,6 +95,7 @@ const HomePage = () => {
             priority
             className="object-contain dark:brightness-90"
             sizes="(max-width: 768px) 250px, (max-width: 1200px) 440px, 600px" />
+
         </motion.div>
 
       </div>
